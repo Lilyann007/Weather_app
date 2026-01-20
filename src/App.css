@@ -1,0 +1,96 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #80bfff;
+}
+
+.container{
+  width: 90%; /* 移动端占 90% */
+  /* max-width: 400px; 电脑端最大 400px，不让它无限拉长 */
+  text-align: center;
+  background-color: rgb(237, 231, 219);
+}
+
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search-section{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.weather-search{
+  /* flex-grow:1; */
+  padding: 10px;
+  font-size: 18px;
+  border:1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.weather-search::placeholder{
+  font-size: 16px;
+  color: #bbb;
+  font-style: italic;
+}
+
+.search-btn{
+  background-color: #80bfff;
+  color: white;
+  border: none;
+}
+
+.search-btn:hover{
+  background-color: white;
+  color: #80bfff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.spinner{
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #80bfff;
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+
+.error-message{
+  background-color: #ffcccc;
+  color:#cc0000;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.weather-content{
+  padding: 10px;
+}
+
+@keyframes spin {
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
