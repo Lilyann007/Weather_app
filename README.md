@@ -1,16 +1,30 @@
-# React + Vite
+# React Weather App (Real-time Forecast)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个基于 React 开发的响应式天气预报应用。用户可以通过搜索全球城市，实时获取当前的温度、湿度、风速以及当天的最高/最低气温。
 
-Currently, two official plugins are available:
+## 🚀 功能亮点
+* **双阶段异步搜索**：集成 Open-Meteo Geocoding API，实现从“城市名”到“经纬度”的精准转换，再获取具体天气数据。
+* **多维度数据展示**：除了基础温度，还展示了体感湿度、风速以及当日温差范围。
+* **健壮的状态管理**：
+    * **Loading 状态**：在请求期间展示加载动画，优化用户感知。
+    * **错误处理机制**：针对“城市未找到”或“网络异常”提供了友好的用户提示。
+* **本地化体验**：界面采用中日文结合设计，适配东亚用户视觉习惯。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ 技术栈
+* **框架**: React (Hooks: useState, useEffect)
+* **API**: [Open-Meteo API](https://open-meteo.com/) (无须密钥，隐私友好)
+* **数据处理**: 异步函数 (Async/Await)、JSON 解析、数据清洗与结构重组。
 
-## React Compiler
+## 💡 核心技术细节
+在这个项目中，我重点解决了以下技术问题：
+1.  **数据的二次组装**：原始 API 返回的数据包含复杂的数组和时间戳。我设计了 `weatherObj` 结构，在 `try-catch` 块中完成数据提取，确保组件渲染逻辑简洁清晰。
+2.  **异步竞态控制**：通过 `finally` 代码块确保无论请求成功或失败，都能正确关闭 `loading` 状态。
+3.  **用户输入优化**：支持点击按钮和回车键触发搜索，并对空输入进行了校验。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 本地运行
+```bash
+npm install
+npm run dev
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#启动后访问：
+http://localhost:5173
